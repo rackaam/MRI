@@ -1,10 +1,7 @@
-package mri.socket.tcp.nom;
+package mri.socket.tcp.charset;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -18,12 +15,18 @@ public class ServeurTCP {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String charset;
+        if (args.length > 0) {
+            charset = args[0];
+        } else {
+            charset = "UTF-8";
+        }
         boolean run = true;
         while(run){
             try {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connecté");
-                traiterSocketCliente(socket);
+                traiterSocketCliente(socket, charset);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -32,16 +35,16 @@ public class ServeurTCP {
 
     }
 
-    public static void traiterSocketCliente(Socket socket){
+    public static void traiterSocketCliente(Socket socket, String charset){
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            reader = creerReader(socket, charset);
         } catch (IOException e) {
             e.printStackTrace();
         }
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(socket.getOutputStream());
+            writer = creerWriter(socket, charset);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,12 +74,12 @@ public class ServeurTCP {
         }
     }
 
-    public static BufferedReader creerReader(Socket socket) throws IOException {
-        return new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    public static BufferedReader creerReader(Socket socket, String charset) throws IOException {
+        return new BufferedReader(new InputStreamReader(socket.getInputStream(), charset));
     }
 
-    public static PrintWriter creerWriter(Socket socket) throws IOException {
-        return new PrintWriter(socket.getOutputStream());
+    public static PrintWriter creerWriter(Socket socket, String charset) throws IOException {
+        return new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), charset));
     }
 
     public static String recevoirMessage(BufferedReader reader) throws IOException {
