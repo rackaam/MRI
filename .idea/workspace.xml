@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fdd9a98-548f-4cfa-a179-1d0175ba7492" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/address/AfficheInterfaces.java" afterPath="$PROJECT_DIR$/src/mri/socket/address/AfficheInterfaces.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/udp/ChatMulticast.java" afterPath="$PROJECT_DIR$/src/mri/socket/udp/ChatMulticast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/ClientTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/ClientTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/charset/ClientTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/charset/ClientTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/chat/ClientTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/chat/ClientTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/nom/ClientTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/nom/ClientTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/thread/ClientTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/thread/ClientTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/chat/EcouteServeur.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/chat/EcouteServeur.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MRI.iml" afterPath="$PROJECT_DIR$/MRI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/ServeurTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/ServeurTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/charset/ServeurTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/charset/ServeurTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/chat/ServeurTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/chat/ServeurTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/nom/ServeurTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/nom/ServeurTCP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mri/socket/tcp/thread/ServeurTCP.java" afterPath="$PROJECT_DIR$/src/mri/socket/tcp/thread/ServeurTCP.java" />
-    </list>
+    <list default="true" id="6fdd9a98-548f-4cfa-a179-1d0175ba7492" name="Default" comment="" />
     <ignored path="MRI.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -577,12 +562,12 @@
       <created>1424975195391</created>
       <option name="number" value="Default" />
       <updated>1424975195391</updated>
-      <workItem from="1424975202770" duration="9186000" />
+      <workItem from="1424975202770" duration="9293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9186000" />
+    <option name="totallyTimeSpent" value="9293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="800" height="860" extended-state="0" />
