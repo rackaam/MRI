@@ -31,6 +31,11 @@ public class ChatMulticast {
         }
     }
 
+    /**
+     * Envoyer des messages
+     * @param s
+     * @param message
+     */
     static void envoyerMessage(MulticastSocket s, String message) {
         byte[] contenuMessage = message.getBytes();
         if (contenuMessage.length > 1024)
@@ -38,14 +43,20 @@ public class ChatMulticast {
         DatagramPacket packet;
         packet = new DatagramPacket(contenuMessage, contenuMessage.length, groupeIP, PORT);
         try {
-            s.send(packet);
+            s.send(packet);//envoie du datagramme
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Recevoir message
+     * Méthode bloquante tant qu'un message n'est pas reçu
+     * @param s
+     * @return
+     */
     static String recevoirMessage(MulticastSocket s) {
-        byte[] contenuMessage = new byte[1024];
+        byte[] contenuMessage = new byte[1024];//Taille de message maximale 1024
         DatagramPacket message = new DatagramPacket(contenuMessage, contenuMessage.length);
         try {
             s.receive(message);
@@ -56,6 +67,10 @@ public class ChatMulticast {
         return null;
     }
 
+    /**
+     * Lit un message au clavier
+     * @return
+     */
     static String lireMessageAuClavier() {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();

@@ -14,8 +14,13 @@ import java.util.concurrent.Executors;
 
 public class ServeurTCP {
 
+    /*Liste static des printers vers les sockets actives */
     private static List<PrintWriter> printerSocketActives = new ArrayList<PrintWriter>();
 
+    /**
+     * Creer un serveur TCP ouvert sur le port 9999
+     * @param args
+     */
     public static void main(String[] args) {
         int socketPort = 9999;
         ServerSocket serverSocket = null;
@@ -43,6 +48,10 @@ public class ServeurTCP {
 
     }
 
+    /**
+     * Gère l'envoie et la réception de message depuis le client
+     * @param socket
+     */
     public static void traiterSocketCliente(Socket socket) {
         BufferedReader reader = null;
         try {
@@ -84,23 +93,49 @@ public class ServeurTCP {
         enleverPrinterSocketActives(writer);
     }
 
+    /**
+     * Création d'un reader associé à une socket
+     *@param socket
+     * @return
+     * @throws IOException
+     */
     public static BufferedReader creerReader(Socket socket) throws IOException {
         return new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
-
+    /**
+     * Création d'un writer associé à une socket
+     * @param socket
+     *  @return
+     * @throws IOException
+     */
     public static PrintWriter creerWriter(Socket socket) throws IOException {
         return new PrintWriter(socket.getOutputStream());
     }
 
+    /**
+     *  Lit le contenu du buffered reader
+     * @param reader
+     * @return string
+     * @throws IOException
+     */
     public static String recevoirMessage(BufferedReader reader) throws IOException {
         return reader.readLine();
     }
 
+    /**
+     * Ecrit dans le PrintWriter
+     * @param printWriter
+     * @param message
+     */
     public static void envoyerMessage(PrintWriter printWriter, String message) {
         printWriter.println(message);
         printWriter.flush();
     }
 
+    /**
+     * envoie le message à toutes les sockets actives
+     * @param message
+     */
     public static synchronized void envoyerATouteLesSocketsActive(String message) {
         for (PrintWriter writer : printerSocketActives) {
             writer.println(message);
@@ -115,10 +150,18 @@ public class ServeurTCP {
         return s.substring(5);
     }
 
+    /**
+     *ajouter le printer à la liste
+     * @param printWriter
+     */
     public static synchronized void ajouterPrinterSocketActives(PrintWriter printWriter) {
         printerSocketActives.add(printWriter);
     }
 
+    /**
+     * enlever le printer à la liste
+     * @param printWriter
+     */
     public static synchronized void enleverPrinterSocketActives(PrintWriter printWriter) {
         printerSocketActives.remove(printWriter);
     }

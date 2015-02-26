@@ -7,6 +7,10 @@ import java.net.Socket;
 
 public class ServeurTCP {
 
+    /**
+     * Creer un serveur TCP ouvert sur le port 9999
+     * @param args
+     */
     public static void main(String[] args) {
         int socketPort = 9999;
         ServerSocket serverSocket = null;
@@ -22,11 +26,11 @@ public class ServeurTCP {
             charset = "UTF-8";
         }
         boolean run = true;
-        while(run){
+        while(run){//attente de connexions
             try {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connecté");
-                traiterSocketCliente(socket, charset);
+                traiterSocketCliente(socket, charset);//traitement
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -35,6 +39,10 @@ public class ServeurTCP {
 
     }
 
+    /**
+     * Gère l'envoie et la réception de message depuis le client
+     * @param socket
+     */
     public static void traiterSocketCliente(Socket socket, String charset){
         BufferedReader reader = null;
         try {
@@ -74,18 +82,43 @@ public class ServeurTCP {
         }
     }
 
+    /**
+     * Création d'un reader associé à une socket
+     *@param socket
+     * @param charset
+     * @return
+     * @throws IOException
+     */
     public static BufferedReader creerReader(Socket socket, String charset) throws IOException {
         return new BufferedReader(new InputStreamReader(socket.getInputStream(), charset));
     }
 
+    /**
+     * Création d'un writer associé à une socket
+     * @param socket
+     * @param charset
+     * @return
+     * @throws IOException
+     */
     public static PrintWriter creerWriter(Socket socket, String charset) throws IOException {
         return new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), charset));
     }
 
+    /**
+     *  Lit le contenu du buffered reader
+     * @param reader
+     * @return string
+     * @throws IOException
+     */
     public static String recevoirMessage(BufferedReader reader) throws IOException {
         return reader.readLine();
     }
 
+    /**
+     * Ecrit dans le PrintWriter
+     * @param printWriter
+     * @param message
+     */
     public static void envoyerMessage(PrintWriter printWriter, String message){
         printWriter.println(message);
         printWriter.flush();

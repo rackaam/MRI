@@ -17,7 +17,7 @@ public class EcouteServeur implements Runnable {
         while (true) {
             String res = null;
             try {
-                res = ClientTCP.recevoirMessage(reader);
+                res = ClientTCP.recevoirMessage(reader);//Réception message
                 System.out.println(res);
             } catch (IOException e) {
                 e.printStackTrace();
